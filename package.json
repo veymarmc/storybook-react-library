@@ -1,10 +1,21 @@
 {
   "name": "@vmc-react-js/storybook-react-library",
+  "description": "Ready to use useful react components.",
   "version": "0.1.0",
   "private": false,
   "main": "dist/index.js",
   "files": [
     "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/veymarmc/storybook-react-library.git"
+  },
+  "keywords": [
+    "react",
+    "components",
+    "storybook",
+    "webpack"
   ],
   "scripts": {
     "start": "react-scripts start",
