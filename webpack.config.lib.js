@@ -20,7 +20,19 @@ module.exports = {
       },
       {
         test: /\.(s(a|c)ss)$/,
-        use: [MiniCssExtractPlugin.loader, 'css-loader', 'sass-loader']
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                auto: true,
+                localIdentName: "vmc-react-components__[local]--[hash:base64:5]"
+              }
+            }
+          },
+          'sass-loader'
+        ]
       }
     ]
   },
