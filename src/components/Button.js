@@ -6,13 +6,13 @@ import styles from './button.module.scss';
  * Primary UI component for user interaction
  */
 export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
-  const mode = primary ? styles['storybook-button--primary'] : styles['storybook-button--secondary'];
+  const mode = primary ? styles['button--primary'] : styles['button--secondary'];
   return (
     <button
       type="button"
       className={[
-        styles['storybook-button'],
-        styles[`storybook-button--${size}`],
+        styles['button'],
+        styles[`button--${size}`],
         mode].join(' ')}
       style={backgroundColor && { backgroundColor }}
       {...props}
