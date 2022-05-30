@@ -1,9 +1,9 @@
 @use '../styles' as s;
 
 .button {
-  font-family: s.$font-family;
   font-weight: 700;
   border: 0;
+  font-family: var(--font-family);
   border-radius: 0.28571429rem;
   cursor: pointer;
   display: inline-block;
