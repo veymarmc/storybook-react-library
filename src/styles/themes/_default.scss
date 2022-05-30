@@ -1,0 +1,30 @@
+:root {
+  --color-bg: #ffffff;
+  --color-text: #292929;
+
+  --color-primary: #2185d0;
+  --color-text-primary: #ffffff;
+
+  --color-secondary: #1b1c1d;
+  --color-text-secondary: #ffffff;
+
+  --color-default: #e0e1e2;
+  --color-text-default: #686869;
+}
+
+// COLORS:
+// TODO: this colors has to be removed to its correct place in its correct theme.
+$primary-color: #e50914;
+$primary-color-hover: #e50914;
+$primary-color-active: #e50914;
+$primary-color-focus: #e50914;
+
+$secondary-color: #0d0805;
+$secondary-color-hover: #0d0805;
+$secondary-color-active: #0d0805;
+$secondary-color-focus: #0d0805;
+
+$default-color: #e0e1e2;
+$default-color-hover: #cacbcd;
+$default-color-active: #babbbc;
+$default-color-focus: #cacbcd;

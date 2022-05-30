@@ -1,0 +1,12 @@
+@mixin fluid {
+  width: 100%;
+  display: block;
+}
+
+.fluid {
+  @include fluid;
+}
+
+.underlined {
+  text-decoration: underline;
+}
