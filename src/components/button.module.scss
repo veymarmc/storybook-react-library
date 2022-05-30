@@ -3,10 +3,12 @@
 .button {
   font-weight: 700;
   border: 0;
-  font-family: var(--font-family);
   border-radius: 0.28571429rem;
+  background-color: var(--color-default);
+  color: var(--color-text-default);
   cursor: pointer;
   display: inline-block;
+  font-family: var(--font-family);
   line-height: 1em;
   padding: 0.78571429em 1.5em 0.78571429em;
 }
@@ -27,4 +29,12 @@
 }
 .button--large {
   font-size: 1.14285714rem;
+}
+.button--inverted {
+  background-color: transparent;
+  box-shadow: 0 0 0 2px var(--color-text-default) inset;
+}
+
+.button.fluid {
+  @include s.fluid;
 }

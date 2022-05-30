@@ -5,16 +5,39 @@ import styles from './button.module.scss';
 /**
  * Primary UI component for user interaction
  */
-export const Button = ({ primary, backgroundColor, size, label, ...props }) => {
-  const mode = primary ? styles['button--primary'] : styles['button--secondary'];
+export const Button = ({
+  backgroundColor,
+  className,
+  color,
+  fluid,
+  inverted,
+  primary,
+  secondary,
+  label,
+  size,
+  ...props }) => {
+  const mode = primary
+    ? styles['button--primary']
+    : secondary
+      ? styles['button--secondary']
+      : '';
+
+  const invertedMode = inverted ? styles['button--inverted'] : '';
+  const fluidMode = fluid ? styles['fluid'] : '';
+  const invertedColor = color ? { boxShadow: `0 0 0 2px ${color} inset`, color} : {};
+  const background = backgroundColor ? { backgroundColor } : {};
+
   return (
     <button
       type="button"
       className={[
         styles['button'],
+        fluidMode,
         styles[`button--${size}`],
-        mode].join(' ')}
-      style={backgroundColor && { backgroundColor }}
+        mode,
+        invertedMode,
+        className].join(' ')}
+      style={{...background, ...invertedColor}}
       {...props}
     >
       {label}
@@ -28,13 +51,33 @@ Button.propTypes = {
    */
   primary: PropTypes.bool,
   /**
+   * Button secondary mode.
+   */
+  secondary: PropTypes.bool,
+  /**
    * What background color to use
    */
   backgroundColor: PropTypes.string,
   /**
+   * Extra classNames to add to the component
+   */
+  className: PropTypes.string,
+  /**
+   * A valid color to apply to the inverted mode
+   */
+  color: PropTypes.string,
+  /**
    * How large should the button be?
    */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
+  /**
+   * Makes a button fluid
+   */
+  fluid: PropTypes.bool,
+  /**
+   * inverted mode.
+   */
+  inverted: PropTypes.bool,
   /**
    * Button contents
    */
@@ -47,7 +90,12 @@ Button.propTypes = {
 
 Button.defaultProps = {
   backgroundColor: null,
+  color: null,
+  className: null,
+  fluid: false,
+  inverted: false,
   primary: false,
+  secondary: false,
   size: 'medium',
   onClick: undefined,
 };
