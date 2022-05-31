@@ -1,2 +1,6 @@
 @forward 'themes/default';
 @forward 'utilities';
+
+// importing font awesome.
+@import '../components/assets/css/fontawesome.min.css';
+@import '../components/assets/css/solid.min.css';
