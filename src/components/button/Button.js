@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styles from './button.module.scss';
+import './button.scss';
 
 /**
  * Primary UI component for user interaction
@@ -17,13 +17,13 @@ export const Button = ({
   size,
   ...props }) => {
   const mode = primary
-    ? styles['button--primary']
+    ? 'button--primary'
     : secondary
-      ? styles['button--secondary']
+      ? 'button--secondary'
       : '';
 
-  const invertedMode = inverted ? styles['button--inverted'] : '';
-  const fluidMode = fluid ? styles['fluid'] : '';
+  const invertedMode = inverted ? 'button--inverted' : '';
+  const fluidMode = fluid ? 'fluid' : '';
   const invertedColor = color ? { boxShadow: `0 0 0 2px ${color} inset`, color} : {};
   const background = backgroundColor ? { backgroundColor } : {};
 
@@ -31,9 +31,9 @@ export const Button = ({
     <button
       type="button"
       className={[
-        styles['button'],
+        'vmcrjc-button',
         fluidMode,
-        styles[`button--${size}`],
+        `button--${size}`,
         mode,
         invertedMode,
         className].join(' ')}

@@ -1,6 +1,6 @@
 import './../styles/_index.scss';
 
-export { Button } from './Button';
-export { Header } from './Header';
-export { Icon } from './Icon';
-export { Page } from './Page';
+export { Button } from './button/Button';
+export { Header } from './header/Header';
+export { Icon } from './icon/Icon';
+export { Page } from './page/Page';
