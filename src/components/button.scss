@@ -1,6 +1,4 @@
-@use '../styles' as s;
-
-.button {
+.vmcrjc-button {
   font-weight: 700;
   border: 0;
   border-radius: 0.28571429rem;
@@ -12,29 +10,25 @@
   line-height: 1em;
   padding: 0.78571429em 1.5em 0.78571429em;
 }
-.button--primary {
+.vmcrjc-button.button--primary {
   color: var(--color-text-primary);
   background-color: var(--color-primary);
 }
-.button--secondary {
+.vmcrjc-button.button--secondary {
   color: var(--color-text-secondary);
   background-color: var(--color-secondary);
   // box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
 }
-.button--small {
+.vmcrjc-button.button--small {
   font-size: 0.85714286rem;
 }
-.button--medium {
+.vmcrjc-button.button--medium {
   font-size: 1rem;
 }
-.button--large {
+.vmcrjc-button.button--large {
   font-size: 1.14285714rem;
 }
-.button--inverted {
+.vmcrjc-button.button--inverted {
   background-color: transparent;
   box-shadow: 0 0 0 2px var(--color-text-default) inset;
-}
-
-.button.fluid {
-  @include s.fluid;
 }
