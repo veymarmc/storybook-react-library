@@ -40,7 +40,8 @@ export const Button = ({
       style={{...background, ...invertedColor}}
       {...props}
     >
-      {label}
+      {/* TODO: complete the icon implementation */}
+      <i className='fa-solid fa-globe'></i> {label}
     </button>
   );
 };
