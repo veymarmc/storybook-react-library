@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button } from '../components';
+import { Button, Icon } from '../components';
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -17,49 +17,55 @@ const Template = (args) => <Button {...args} />;
 
 export const Default = Template.bind({});
 Default.args = {
-  label: 'Button',
+  children: 'Button',
 };
 
 export const Primary = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 Primary.args = {
   primary: true,
-  label: 'Button',
+  children: 'Button',
 };
 
 export const Secondary = Template.bind({});
 Secondary.args = {
-  label: 'Button',
+  children: 'Button',
   secondary: true,
 };
 
 export const Large = Template.bind({});
 Large.args = {
   size: 'large',
-  label: 'Button',
+  children: 'Button',
 };
 
 export const Small = Template.bind({});
 Small.args = {
   size: 'small',
-  label: 'Button',
+  children: 'Button',
 };
 
 export const Inverted = Template.bind({});
 Inverted.args = {
-  label: 'Button',
+  children: 'Button',
   inverted: true,
 };
 
 export const ColoredInverted = Template.bind({});
 ColoredInverted.args = {
-  label: 'Button',
+  children: 'Button',
   inverted: true,
   color: 'orange',
 };
 
 export const Fluid = Template.bind({});
 Fluid.args = {
-  label: 'Button',
+  children: 'Button',
   fluid: true,
+};
+
+export const IconButton = Template.bind({});
+IconButton.args = {
+  children: <><Icon name='globe' /> Button</>,
+  inverted: true
 };

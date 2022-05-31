@@ -9,11 +9,11 @@ export const Button = ({
   backgroundColor,
   className,
   color,
+  children,
   fluid,
   inverted,
   primary,
   secondary,
-  label,
   size,
   ...props }) => {
   const mode = primary
@@ -40,8 +40,7 @@ export const Button = ({
       style={{...background, ...invertedColor}}
       {...props}
     >
-      {/* TODO: complete the icon implementation */}
-      <i className='fa-solid fa-globe'></i> {label}
+      {children}
     </button>
   );
 };
@@ -59,6 +58,10 @@ Button.propTypes = {
    * What background color to use
    */
   backgroundColor: PropTypes.string,
+  /**
+   * Content of the button i.e. label or/and icon
+   */
+  children: PropTypes.node.isRequired,
   /**
    * Extra classNames to add to the component
    */
@@ -79,10 +82,6 @@ Button.propTypes = {
    * inverted mode.
    */
   inverted: PropTypes.bool,
-  /**
-   * Button contents
-   */
-  label: PropTypes.string.isRequired,
   /**
    * Optional click handler
    */
