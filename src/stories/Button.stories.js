@@ -58,8 +58,18 @@ Fluid.args = {
   fluid: true,
 };
 
-export const IconButton = Template.bind({});
-IconButton.args = {
+export const NestedIcon = Template.bind({});
+NestedIcon.args = {
   children: <><Icon name='globe' /> Button</>,
   primary: true
+};
+
+export const TrailingIcon = Template.bind({});
+TrailingIcon.args = {
+  trailingIcon: 'caret-down',
+};
+
+export const LeadingIcon = Template.bind({});
+LeadingIcon.args = {
+  leadingIcon: 'user',
 };

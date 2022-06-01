@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './button.scss';
+import { Icon } from './../../components';
 
 /**
  * Primary UI component for user interaction
@@ -15,6 +16,8 @@ export const Button = ({
   primary,
   secondary,
   size,
+  trailingIcon,
+  leadingIcon,
   ...props }) => {
   const mode = primary
     ? 'button--primary'
@@ -40,7 +43,9 @@ export const Button = ({
       style={{...background, ...invertedColor}}
       {...props}
     >
+      {leadingIcon && <Icon name={leadingIcon} className='button__leading-icon'/>}
       {children}
+      {trailingIcon && <Icon name={trailingIcon} className='button__trailing-icon'/>}
     </button>
   );
 };
@@ -71,9 +76,17 @@ Button.propTypes = {
    */
   color: PropTypes.string,
   /**
+   * Icon name to be placed at the beggingin of the button label
+   */
+  leadingIcon: PropTypes.string,
+  /**
    * How large should the button be?
    */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
+  /**
+   * Icon name to be placed at the end of the button
+   */
+  trailingIcon: PropTypes.string,
   /**
    * Makes a button fluid
    */
@@ -94,8 +107,10 @@ Button.defaultProps = {
   className: null,
   fluid: false,
   inverted: false,
+  leadingIcon: null,
   primary: false,
   secondary: false,
   size: 'medium',
+  trailingIcon: null,
   onClick: undefined,
 };
