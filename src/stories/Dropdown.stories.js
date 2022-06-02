@@ -7,9 +7,16 @@ export default {
   component: Dropdown,
 };
 
-const Template = args => <Dropdown {...args} />;
-
-export const Default = Template.bind({});
-Default.args = {
-  children: <Button {...ButtonStories.ColoredInverted.args} trailingIcon='caret-down' />
-};
+export const NestedTriggerDropdown = args => (
+  <Dropdown
+    {...args}
+    trigger={(open, setOpen) => (
+      <Button
+        {...ButtonStories.ColoredInverted.args}
+        trailingIcon={`caret-${!open ? 'down': 'up'}`}
+        onClick={setOpen}
+      />
+    )}
+  >
+  </Dropdown>
+);
