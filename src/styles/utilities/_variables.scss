@@ -9,3 +9,9 @@ html {
   font-size: var(--font-size);
   box-sizing: border-box;
 }
+
+* {
+  font-family: inherit;
+  font-size: inherit;
+  box-sizing: inherit;
+}

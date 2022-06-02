@@ -1,3 +1,30 @@
+:root {
+  --medium-horizontal-padding: 1em;
+  --medium-vertical-padding: 0.78571429em;
+  
+  --medium-border-radius: 0.28571429rem;
+
+  // TODO: this is part of a theme
+  --menu-border-color: rgba(34, 36, 38, 0.15);
+  --menu-box-shadow: 0 2px 4px 0 var(--menu-border-color), 0 2px 10px 0 var(--menu-border-color);
+  --menu-item-hover-color: rgba(0, 0, 0, 0.05);
+}
+
+// Size names
+$medium: medium;
+$small: small;
+
+@mixin padding($size) {
+  $hp: var(--medium-horizontal-padding);
+  $vp: var(--medium-vertical-padding);
+
+  @if $size == $medium {
+    padding: $vp $hp;
+  } @else if $size == $small {
+    padding: $vp*0.7 $hp*0.7
+  }
+}
+
 @mixin fluid {
   width: 100%;
   display: block;

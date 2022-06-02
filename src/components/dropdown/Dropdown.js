@@ -1,13 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button } from './../../components';
+import './dropdown.scss';
 
 /**
  * Component that deploy a list of option to be selected with one by default
  */
 export const Dropdown = ({ children }) => {
   return (
-    children
+    <div className='vmcrjc-dropdown'>
+      {children}
+      <ul>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+        <li>item</li>
+      </ul>
+    </div>
   );
 };
 
