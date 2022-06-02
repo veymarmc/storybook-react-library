@@ -7,14 +7,32 @@ export default {
   component: Dropdown,
 };
 
+const dataItems = [
+  {
+    item: 'item1',
+    value: 'item1',
+  },
+  {
+    item: 'item2',
+    value: 'item2',
+    selected: true
+  },
+  {
+    item: 'item2',
+    value: 'item2',
+  }
+];
+
 export const NestedTriggerDropdown = args => (
   <Dropdown
     {...args}
-    trigger={(open, setOpen) => (
+    data={dataItems}
+    trigger={(open, setOpen, item) => (
       <Button
         {...ButtonStories.ColoredInverted.args}
         trailingIcon={`caret-${!open ? 'down': 'up'}`}
         onClick={setOpen}
+        label={item}
       />
     )}
   >

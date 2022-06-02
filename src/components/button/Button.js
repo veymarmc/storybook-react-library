@@ -13,6 +13,7 @@ export const Button = ({
   children,
   fluid,
   inverted,
+  label,
   primary,
   secondary,
   size,
@@ -44,7 +45,7 @@ export const Button = ({
       {...props}
     >
       {leadingIcon && <Icon name={leadingIcon} className='button__leading-icon'/>}
-      {children}
+      {children || label}
       {trailingIcon && <Icon name={trailingIcon} className='button__trailing-icon'/>}
     </button>
   );
@@ -66,7 +67,7 @@ Button.propTypes = {
   /**
    * Content of the button i.e. label or/and icon
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   /**
    * Extra classNames to add to the component
    */
@@ -75,6 +76,10 @@ Button.propTypes = {
    * A valid color to apply to the inverted mode
    */
   color: PropTypes.string,
+  /**
+   * The button label, if children is used this will be ignored.
+   */
+  label: PropTypes.string,
   /**
    * Icon name to be placed at the beggingin of the button label
    */
@@ -107,6 +112,7 @@ Button.defaultProps = {
   className: null,
   fluid: false,
   inverted: false,
+  label: null,
   leadingIcon: null,
   primary: false,
   secondary: false,

@@ -52,7 +52,7 @@ Inverted.args = {
 
 export const ColoredInverted = Template.bind({});
 ColoredInverted.args = {
-  ...Default.args,
+  label: 'button',
   inverted: true,
   color: 'orange',
 };
