@@ -27,13 +27,12 @@ export const NestedTriggerDropdown = args => (
   <Dropdown
     {...args}
     data={dataItems}
-    onChange={(item) => alert(item.value)}
-    trigger={(open, setOpen, item) => (
+    trigger={(open, setOpen, current) => (
       <Button
         {...ButtonStories.ColoredInverted.args}
         trailingIcon={`caret-${!open ? 'down': 'up'}`}
         onClick={setOpen}
-        label={item}
+        label={current.value}
       />
     )}
   >

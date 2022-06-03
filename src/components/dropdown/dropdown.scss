@@ -18,6 +18,7 @@
 
   li {
     display: block;
+    background-color: var(--component-bg);
     @include s.padding(s.$medium);
 
     &:hover {

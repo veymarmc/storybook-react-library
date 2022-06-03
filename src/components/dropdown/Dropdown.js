@@ -11,6 +11,7 @@ export const Dropdown = ({ data, trigger, onChange }) => {
   const [selected, setSelected] = useState(
     data.find(d => d.selected) || data[0] || { value: 'choose a value..'}
   );
+  const dropdownRef = useRef({});
 
   const changeOpen = () => {
     setOpen(!open);
@@ -24,25 +25,26 @@ export const Dropdown = ({ data, trigger, onChange }) => {
   };
 
   return (
-    <div className='vmcrjc-dropdown'>
-      {trigger(open, changeOpen, selected.value)}
+    <div className='vmcrjc-dropdown' ref={dropdownRef}>
+      {trigger(open, changeOpen, selected)}
       {open && 
         <DropdownList 
           data={data}
           selectItem={selectItem}
           setOpen={setOpen}
+          parentRef={dropdownRef}
         />
       }
     </div>
   );
 };
 
-const DropdownList = ({data, selectItem, setOpen}) => {
-  const list = useRef({});
-  useVerifyClickInComponent(list, () => setOpen(false))
+const DropdownList = ({data, selectItem, setOpen, parentRef}) => {
+  const listRef = useRef({});
+  useVerifyClickInComponent([listRef, parentRef], () => setOpen(false))
 
   return (
-    <ul ref={list}>
+    <ul ref={listRef}>
       {data.map((d, i) => (
         <li key={i} onClick={() => selectItem(d)} >
           {d.item}
