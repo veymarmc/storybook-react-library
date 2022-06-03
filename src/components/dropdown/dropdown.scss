@@ -1,0 +1,27 @@
+@use '../../styles/main' as s;
+
+.vmcrjc-dropdown {
+  display: inline-block;
+  position: relative;
+
+  ul {
+    position: absolute;
+    top: 100%;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+    padding: 0;
+    box-shadow: var(--menu-box-shadow);
+    border-radius: var(--medium-border-radius);
+    border: 1px solid var(--menu-border-color);
+    min-width: 100%;
+  }
+
+  li {
+    display: block;
+    @include s.padding(s.$medium);
+
+    &:hover {
+      background-color: var(--menu-item-hover-color);
+    }
+  }
+}

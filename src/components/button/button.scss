@@ -1,14 +1,16 @@
+@use '../../styles/main' as s;
+
 .vmcrjc-button {
   font-weight: 700;
   border: 0;
-  border-radius: 0.28571429rem;
+  border-radius: var(--medium-border-radius);
   background-color: var(--color-default);
   color: var(--color-text-default);
   cursor: pointer;
   display: inline-block;
   font-family: var(--font-family);
   line-height: 1em;
-  padding: 0.78571429em 1.5em 0.78571429em;
+  @include s.padding(s.$medium);
 }
 .vmcrjc-button.button--primary {
   color: var(--color-text-primary);
@@ -31,4 +33,10 @@
 .vmcrjc-button.button--inverted {
   background-color: transparent;
   box-shadow: 0 0 0 2px var(--color-text-default) inset;
+}
+.vmcrjc-button .button__trailing-icon {
+  padding-left: 0.5rem;
+}
+.vmcrjc-button .button__leading-icon {
+  padding-right: 0.5rem;
 }

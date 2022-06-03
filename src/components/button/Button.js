@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './button.scss';
+import { Icon } from './../../components';
 
 /**
  * Primary UI component for user interaction
@@ -12,9 +13,12 @@ export const Button = ({
   children,
   fluid,
   inverted,
+  label,
   primary,
   secondary,
   size,
+  trailingIcon,
+  leadingIcon,
   ...props }) => {
   const mode = primary
     ? 'button--primary'
@@ -40,7 +44,9 @@ export const Button = ({
       style={{...background, ...invertedColor}}
       {...props}
     >
-      {children}
+      {leadingIcon && <Icon name={leadingIcon} className='button__leading-icon'/>}
+      {children || label}
+      {trailingIcon && <Icon name={trailingIcon} className='button__trailing-icon'/>}
     </button>
   );
 };
@@ -61,7 +67,7 @@ Button.propTypes = {
   /**
    * Content of the button i.e. label or/and icon
    */
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   /**
    * Extra classNames to add to the component
    */
@@ -71,9 +77,21 @@ Button.propTypes = {
    */
   color: PropTypes.string,
   /**
+   * The button label, if children is used this will be ignored.
+   */
+  label: PropTypes.string,
+  /**
+   * Icon name to be placed at the beggingin of the button label
+   */
+  leadingIcon: PropTypes.string,
+  /**
    * How large should the button be?
    */
   size: PropTypes.oneOf(['small', 'medium', 'large']),
+  /**
+   * Icon name to be placed at the end of the button
+   */
+  trailingIcon: PropTypes.string,
   /**
    * Makes a button fluid
    */
@@ -82,6 +100,10 @@ Button.propTypes = {
    * inverted mode.
    */
   inverted: PropTypes.bool,
+  /**
+   * Optional works when onblur state comes
+   */
+  onBlur: PropTypes.func,
   /**
    * Optional click handler
    */
@@ -94,8 +116,12 @@ Button.defaultProps = {
   className: null,
   fluid: false,
   inverted: false,
+  label: null,
+  leadingIcon: null,
   primary: false,
   secondary: false,
   size: 'medium',
+  trailingIcon: null,
+  onBlur: undefined,
   onClick: undefined,
 };
