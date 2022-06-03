@@ -4,20 +4,21 @@ import { useEffect } from 'react';
  * TODO imporove this logic:
  * Hook that verifies if a click was done outside of the html element (ref)
  * This will be execute the callback if the click was outside the component.
- * @param {ReactRef} ref reference of an html element to get its position. 
+ * @param {Array} refs references to verify if the click was on one of them. 
  */
-export function useVerifyClickInComponent(ref, callback) {
+export function useVerifyClickInComponent(refs, callback) {
   useEffect(() => {
     function checksBlurComponent(e) {
-      const {top, right, bottom, left} = ref.current.getBoundingClientRect();
+      const elementWasClicked = refs.some(ref => {
+        const {top, right, bottom, left} = ref.current.getBoundingClientRect();
+        return e.pageX >= left && e.pageX <= right && e.pageY >= top && e.pageY <= bottom
+      });
       
-      if (!(e.pageX >= left && e.pageX <= right && e.pageY >= top && e.pageY <= bottom)) {
-        callback();
-      }
+      !elementWasClicked && callback();
     }
     
     document.addEventListener('mousedown', checksBlurComponent);
     
     return () => document.removeEventListener('mousedown', checksBlurComponent);
-  }, [ref, callback])
+  }, [refs, callback])
 }
