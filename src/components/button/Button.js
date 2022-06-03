@@ -35,7 +35,7 @@ export const Button = ({
     <button
       type="button"
       className={[
-        'vmcrjc-button',
+        'vmcrjc-button button',
         fluidMode,
         `button--${size}`,
         mode,
