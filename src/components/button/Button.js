@@ -101,6 +101,10 @@ Button.propTypes = {
    */
   inverted: PropTypes.bool,
   /**
+   * Optional works when onblur state comes
+   */
+  onBlur: PropTypes.func,
+  /**
    * Optional click handler
    */
   onClick: PropTypes.func,
@@ -118,5 +122,6 @@ Button.defaultProps = {
   secondary: false,
   size: 'medium',
   trailingIcon: null,
+  onBlur: undefined,
   onClick: undefined,
 };

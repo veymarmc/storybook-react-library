@@ -18,8 +18,8 @@ const dataItems = [
     selected: true
   },
   {
-    item: 'item2',
-    value: 'item2',
+    item: 'item3',
+    value: 'item3',
   }
 ];
 
@@ -27,6 +27,7 @@ export const NestedTriggerDropdown = args => (
   <Dropdown
     {...args}
     data={dataItems}
+    onChange={(item) => alert(item.value)}
     trigger={(open, setOpen, item) => (
       <Button
         {...ButtonStories.ColoredInverted.args}
