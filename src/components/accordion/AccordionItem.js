@@ -1,16 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from './../../components'
 
 export function AccordionItem({title, expandIcon, shrinkIcon, content}) {
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <>
-      <div>
-        {title} <Icon name={expandIcon}/> <Icon name={shrinkIcon}/>
+      <div onClick={() => setExpanded(!expanded)}>
+        {title} { !expanded ? <Icon name={expandIcon}/> : <Icon name={shrinkIcon}/>}
       </div>
-      <div>
-        content
-      </div>
+      { expanded &&
+        <div>
+          content
+        </div>
+      }
     </>
   );
 }
