@@ -12,7 +12,7 @@ export function AccordionItem({
 }) {
   return (
     <>
-      <div onClick={() => setActive(!active)}>
+      <div onClick={() => setActive()}>
         {title} { !active ? <Icon name={expandIcon}/> : <Icon name={shrinkIcon}/>}
       </div>
       { active &&
@@ -52,7 +52,6 @@ AccordionItem.propTypes = {
 };
 
 AccordionItem.defaultProps = {
-  content: 'content', // to be erased, only for test.
   active: false,
   expandIcon: 'caret-down',
   shrinkIcon: 'caret-up',

@@ -7,10 +7,11 @@ import './accordion.scss'
 export const Accordion = ({data, expandIcon, shrinkIcon}) => {
   const [sData, setSData] = useState([...data]);
 
-  function changeItem(item, i, active) {
-    const newSData = [...sData];
-    newSData[i] = { ...item, active };
-    setSData(newSData);
+  function setItemActive(index) {
+    setSData(sData.map((item, i) => ({
+      ...item,
+      active: i === index ? !item.active : false
+    })));
   }
 
   return (sData.map((item, i) => (
@@ -19,7 +20,7 @@ export const Accordion = ({data, expandIcon, shrinkIcon}) => {
       {...item}
       expandIcon={expandIcon}
       shrinkIcon={shrinkIcon}
-      setActive={(active) => changeItem(item, i, active)}
+      setActive={() => setItemActive(i)}
     />
   )));
 };
