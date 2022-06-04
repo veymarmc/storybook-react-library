@@ -1,17 +1,8 @@
-// common variables:
-:root {
-  --font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  --font-size: 14px;
-}
-
-html {
-  font-family: var(--font-family);
-  font-size: var(--font-size);
+@mixin main-styles {
   box-sizing: border-box;
+  color: var(--color-text);
 }
 
-* {
-  font-family: inherit;
-  font-size: inherit;
-  box-sizing: inherit;
+[class*="vmcrjc"], [class*="vmcrjc"] *:not(i) {
+  @include main-styles;
 }
