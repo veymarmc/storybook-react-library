@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from './../../components'
 
-export function AccordionItem({title, expandIcon, shrinkIcon, content}) {
-  const [expanded, setExpanded] = useState(false);
-
+export function AccordionItem({
+  content,
+  active,
+  setActive,
+  expandIcon,
+  shrinkIcon,
+  title,
+}) {
   return (
     <>
-      <div onClick={() => setExpanded(!expanded)}>
-        {title} { !expanded ? <Icon name={expandIcon}/> : <Icon name={shrinkIcon}/>}
+      <div onClick={() => setActive(!active)}>
+        {title} { !active ? <Icon name={expandIcon}/> : <Icon name={shrinkIcon}/>}
       </div>
-      { expanded &&
+      { active &&
         <div>
-          content
+          {content}
         </div>
       }
     </>
@@ -21,9 +26,17 @@ export function AccordionItem({title, expandIcon, shrinkIcon, content}) {
 
 AccordionItem.propTypes = {
   /**
-   * Title of the Accordion Item.
+   * The content of the accordion item.
    */
-  title: PropTypes.string.isRequired,
+  content: PropTypes.node,
+  /**
+   * Tells the component if it is expanded
+   */
+  active: PropTypes.bool,
+  /**
+   * function to fire when the expanded event has been triggered
+   */
+  setActive: PropTypes.func.isRequired,
   /**
    * Icon that denotes that the item can be expanded
    */
@@ -33,14 +46,15 @@ AccordionItem.propTypes = {
    */
   shrinkIcon: PropTypes.string,
   /**
-   * The content of the accordion item.
+   * Title of the Accordion Item.
    */
-  content: PropTypes.node,
+  title: PropTypes.string.isRequired,
 };
 
 AccordionItem.defaultProps = {
-  title: 'title',
+  content: 'content', // to be erased, only for test.
+  active: false,
   expandIcon: 'caret-down',
   shrinkIcon: 'caret-up',
-  content: 'content', // to be erased, only for test.
+  title: 'title',
 };

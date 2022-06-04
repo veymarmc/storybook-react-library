@@ -6,7 +6,11 @@ export default {
   component: Accordion
 };
 
-const data = Array(5).fill(2);
+const data = [
+  { title: 'title', content: 'content' },
+  { title: 'title', content: 'content' },
+  { title: 'title', content: 'content' },
+];
 
 const Template = (args) => <Accordion {...args} />;
 

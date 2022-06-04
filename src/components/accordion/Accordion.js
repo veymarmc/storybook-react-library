@@ -1,12 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { AccordionItem } from './AccordionItem';
 
 import './accordion.scss'
 
 export const Accordion = ({data, expandIcon, shrinkIcon}) => {
-  return (data.map( item => (
-    <AccordionItem {...item} expandIcon={expandIcon} shrinkIcon={shrinkIcon} />
+  const [sData, setSData] = useState([...data]);
+
+  function changeItem(item, i, active) {
+    const newSData = [...sData];
+    newSData[i] = { ...item, active };
+    setSData(newSData);
+  }
+
+  return (sData.map((item, i) => (
+    <AccordionItem
+      key={i}
+      {...item}
+      expandIcon={expandIcon}
+      shrinkIcon={shrinkIcon}
+      setActive={(active) => changeItem(item, i, active)}
+    />
   )));
 };
 
@@ -17,7 +31,8 @@ Accordion.propTypes = {
   data: PropTypes.arrayOf(
     PropTypes.shape({
       title: PropTypes.string.isRequired,
-      content: PropTypes.node
+      content: PropTypes.node,
+      active: PropTypes.bool,
     }),
   
   ),
