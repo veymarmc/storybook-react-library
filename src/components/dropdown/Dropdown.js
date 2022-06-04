@@ -25,7 +25,7 @@ export const Dropdown = ({ data, trigger, onChange }) => {
   };
 
   return (
-    <div className='vmcrjc-dropdown' ref={dropdownRef}>
+    <div className='vmcrjc-dropdown dropdown' ref={dropdownRef}>
       {trigger(open, changeOpen, selected)}
       {open && 
         <DropdownList 

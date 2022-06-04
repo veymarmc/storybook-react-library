@@ -1,42 +1,55 @@
 @use '../../styles/main' as s;
 
 .vmcrjc-button {
-  font-weight: 700;
-  border: 0;
-  border-radius: var(--medium-border-radius);
-  background-color: var(--color-default);
-  color: var(--color-text-default);
-  cursor: pointer;
-  display: inline-block;
-  font-family: var(--font-family);
-  line-height: 1em;
-  @include s.padding(s.$medium);
-}
-.vmcrjc-button.button--primary {
-  color: var(--color-text-primary);
-  background-color: var(--color-primary);
-}
-.vmcrjc-button.button--secondary {
-  color: var(--color-text-secondary);
-  background-color: var(--color-secondary);
-  // box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;
-}
-.vmcrjc-button.button--small {
-  font-size: 0.85714286rem;
-}
-.vmcrjc-button.button--medium {
-  font-size: 1rem;
-}
-.vmcrjc-button.button--large {
-  font-size: 1.14285714rem;
-}
-.vmcrjc-button.button--inverted {
-  background-color: transparent;
-  box-shadow: 0 0 0 2px var(--color-text-default) inset;
-}
-.vmcrjc-button .button__trailing-icon {
-  padding-left: 0.5rem;
-}
-.vmcrjc-button .button__leading-icon {
-  padding-right: 0.5rem;
+  &.button {
+    font-weight: 700;
+    border: 0;
+    border-radius: var(--medium-border-radius);
+    background-color: var(--color-default);
+    color: var(--color-text-default);
+    cursor: pointer;
+    display: inline-block;
+    font-family: var(--font-family);
+    line-height: 1em;
+    @include s.padding(s.$medium);
+
+    &--primary {
+      color: var(--color-text-primary);
+      background-color: var(--color-primary);
+    }
+
+    &--secondary {
+      color: var(--color-text-secondary);
+      background-color: var(--color-secondary);
+    }
+
+    &--small {
+      font-size: 0.85714286rem;
+    }
+
+    &--medium {
+      font-size: 1rem;
+    }
+
+    &--large {
+      font-size: 1.14285714rem;
+    }
+
+    &--inverted {
+      background-color: transparent;
+      box-shadow: 0 0 0 2px var(--color-text-default) inset;
+    }
+
+    // Button elements in BEM notation
+    .button {
+      &__trailing-icon {
+        padding-left: 0.5rem;
+      }
+  
+      &__leading-icon {
+        padding-right: 0.5rem;
+      }
+    }
+
+  }
 }
