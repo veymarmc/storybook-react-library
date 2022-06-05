@@ -18,3 +18,11 @@ export const Default = Template.bind({});
 Default.args = {
   data: data,
 };
+
+export const Icons = Template.bind({});
+Icons.storyName = 'Accordion\'s expand/shrink icons';
+Icons.args = {
+  ...Default.args,
+  expandIcon: 'plus',
+  shrinkIcon: 'xmark',
+}
