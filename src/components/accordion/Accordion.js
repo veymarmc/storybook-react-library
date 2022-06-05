@@ -14,15 +14,17 @@ export const Accordion = ({data, expandIcon, shrinkIcon}) => {
     })));
   }
 
-  return (sData.map((item, i) => (
-    <AccordionItem
-      key={i}
-      {...item}
-      expandIcon={expandIcon}
-      shrinkIcon={shrinkIcon}
-      setActive={() => setItemActive(i)}
-    />
-  )));
+  return (
+    sData.map((item, i) => (
+      <AccordionItem
+        key={i}
+        {...item}
+        expandIcon={expandIcon}
+        shrinkIcon={shrinkIcon}
+        setActive={() => setItemActive(i)}
+      />
+    ))
+  );
 };
 
 Accordion.propTypes = {

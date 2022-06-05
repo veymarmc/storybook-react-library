@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from './../../components'
 
+import './accordionItem.scss';
+
 export function AccordionItem({
   content,
   active,
@@ -11,16 +13,16 @@ export function AccordionItem({
   title,
 }) {
   return (
-    <>
-      <div onClick={() => setActive()}>
+    <div className='vmcrjc-accordion-item accordion-item'>
+      <div onClick={() => setActive()} className='accordion-item__title'>
         {title} { !active ? <Icon name={expandIcon}/> : <Icon name={shrinkIcon}/>}
       </div>
       { active &&
-        <div>
+        <div className='accordion-item__content'>
           {content}
         </div>
       }
-    </>
+    </div>
   );
 }
 

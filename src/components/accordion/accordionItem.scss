@@ -1,0 +1,23 @@
+@use '../../styles/main' as s;
+
+.vmcrjc-accordion-item.accordion-item {
+  border: 2px solid var(--component-border-color);
+  border-radius: var(--medium-border-radius);
+  overflow: hidden;
+
+  > div {
+    @include s.padding(s.$medium);
+  }
+  .accordion-item {
+    &__title {
+      @include s.justify-content(s.$jc-sb);
+    }
+    &__content {
+      border-top: 2px solid var(--component-border-color);
+    }
+  }
+}
+
+.vmcrjc-accordion-item + .vmcrjc-accordion-item {
+  margin-top: 0.25rem;
+}
