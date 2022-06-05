@@ -1,13 +1,17 @@
 :root {
   --medium-horizontal-padding: 1em;
   --medium-vertical-padding: 0.78571429em;
-  
   --medium-border-radius: 0.28571429rem;
+}
 
-  // TODO: this is part of a theme
-  --menu-border-color: #d8d8d9;
-  --menu-box-shadow: 0 2px 4px 0 var(--menu-border-color), 0 2px 10px 0 var(--menu-border-color);
-  --menu-item-hover-color: #f2f2f2;
+// Applying general styles only to the components
+@mixin main-styles {
+  box-sizing: border-box;
+  color: var(--color-text);
+}
+
+[class*="vmcrjc"], [class*="vmcrjc"] *:not(i) {
+  @include main-styles;
 }
 
 // Size names
@@ -42,3 +46,33 @@ $small: small;
 .d-none {
   display: none !important;
 }
+.d-flex {
+  display: flex !important;
+}
+
+// flex styles
+// justify content styles
+$jc-sb: sb;
+$jc-sa: sa;
+$jc-c: c;
+
+$jc-rules: $jc-sb, $jc-sa, $jc-c;
+
+@mixin justify-content($type) {
+  @extend .d-flex;
+
+  @if $type == sb {
+    justify-content: space-between !important;
+  } @else if $type == sa{
+    justify-content: space-around !important;
+  } @else if $type == c {
+    justify-content: center !important;
+  }
+}
+
+@each $type in $jc-rules {
+  .justify-content-#{$type} {
+    @include justify-content($type);
+  }
+}
+

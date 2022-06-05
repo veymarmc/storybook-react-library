@@ -1,0 +1,57 @@
+@use '../../styles/main' as s;
+
+.vmcrjc-accordion-item.accordion-item {
+  border-radius: var(--medium-border-radius);
+  overflow: hidden;
+
+  > div {
+    @include s.padding(s.$medium);
+  }
+  .accordion-item {
+    &__title {
+      @include s.justify-content(s.$jc-sb);
+      background-color: var(--color-default);
+      color: var(--color-text-default);
+      font-weight: 700;
+      text-transform: capitalize;
+
+      &--primary {
+        color: var(--color-text-primary);
+        background-color: var(--color-primary);
+      }
+
+      &--secondary {
+        color: var(--color-text-secondary);
+        background-color: var(--color-secondary);
+      }
+
+      & + div {
+        border: 2px solid var(--color-default)
+      }
+
+      &--inverted {
+        background-color: transparent;
+        border: 2px solid var(--color-text-default);
+      }
+      &--inverted + div {
+        background-color: transparent;
+        border: 2px solid var(--color-text-default);
+        border-top: none;
+      }
+    }
+    &__title--primary + div {
+      border: 2px solid var(--color-primary);
+    }
+    &__title--secondary + div {
+      border: 2px solid var(--color-secondary);
+    }
+
+    &__content {
+      background-color: var(--component-bg);
+    }
+  }
+}
+
+.vmcrjc-accordion-item + .vmcrjc-accordion-item {
+  margin-top: 0.5rem;
+}
