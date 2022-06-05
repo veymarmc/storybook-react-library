@@ -6,8 +6,6 @@ export default {
   component: Accordion
 };
 
-// This commend is only for updating the npm version package
-
 const data = [
   { title: 'title', content: 'content' },
   { title: 'title', content: 'content' },
