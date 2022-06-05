@@ -1,8 +1,0 @@
-@mixin main-styles {
-  box-sizing: border-box;
-  color: var(--color-text);
-}
-
-[class*="vmcrjc"], [class*="vmcrjc"] *:not(i) {
-  @include main-styles;
-}
