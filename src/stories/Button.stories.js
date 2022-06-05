@@ -57,7 +57,6 @@ ColoredInverted.args = {
   color: 'orange',
 };
 ColoredInverted.parameters = {
-  ...Default.args,
   backgrounds: {
     default: 'dark'
   }

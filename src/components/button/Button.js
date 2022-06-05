@@ -27,8 +27,8 @@ export const Button = ({
       : '';
 
   const invertedMode = inverted ? 'button--inverted' : '';
-  const fluidMode = fluid ? 'fluid' : '';
   const invertedColor = color ? { boxShadow: `0 0 0 2px ${color} inset`, color} : {};
+  const fluidMode = fluid ? 'fluid' : '';
   const background = backgroundColor ? { backgroundColor } : {};
 
   return (
