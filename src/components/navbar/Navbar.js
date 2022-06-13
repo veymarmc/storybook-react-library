@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Icon } from './../../components';
 import './navbar.scss';
 
 export const Navbar = ({
@@ -34,6 +35,7 @@ export const Navbar = ({
             {a}
           </React.Fragment>
         ))}
+        <Icon name='ellipsis-vertical' className='navbar__overflow' />
       </div>
       }
     </div>

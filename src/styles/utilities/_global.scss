@@ -7,12 +7,15 @@
 // Applying general styles only to the components
 @mixin main-styles {
   box-sizing: border-box;
-  color: var(--color-text);
   margin: 0;
 }
 
 [class*="vmcrjc"], [class*="vmcrjc"] *:not(i) {
   @include main-styles;
+}
+
+[class*="vmcrjc"] {
+  color: var(--color-text);
 }
 
 // Size names

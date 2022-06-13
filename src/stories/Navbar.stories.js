@@ -1,7 +1,6 @@
 import React from 'react';
 import { Navbar, Button, Dropdown } from '../components';
 import { Primary, Secondary, ColoredInverted } from './Button.stories';
-import { NestedTriggerDropdown } from './Dropdown.stories';
 
 export default {
   title: 'Example/Navbar',

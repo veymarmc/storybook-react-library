@@ -5,6 +5,7 @@
   @include s.align-items(s.$c);
   padding: 1.5rem;
   background-color: var(--color-default);
+  color: var(--color-text-default);
   
   .navbar {
     &__title-container {
@@ -24,6 +25,10 @@
       & > * {
         margin-left: 1.5rem;
       }
+    }
+
+    &__overflow {
+      font-size: 1.5rem;
     }
   }
 }
