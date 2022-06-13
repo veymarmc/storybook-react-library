@@ -1,7 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Icon } from './../../components';
+import { Dropdown, Icon } from './../../components';
 import './navbar.scss';
+
+const dataItems = [
+  {
+    item: 'item1',
+    value: 'item1',
+  },
+  {
+    item: 'item2',
+    value: 'item2',
+    selected: true
+  },
+  {
+    item: 'item3',
+    value: 'item3',
+  }
+];
 
 export const Navbar = ({
   actions,
@@ -35,7 +51,16 @@ export const Navbar = ({
             {a}
           </React.Fragment>
         ))}
-        <Icon name='ellipsis-vertical' className='navbar__overflow' />
+        <Dropdown
+          data={dataItems}
+          trigger={(_, setOpen) => (
+            <Icon
+              onClick={setOpen}
+              name='ellipsis-vertical'
+              style={{fontSize: '1.5rem'}}
+            />
+          )}
+        />
       </div>
       }
     </div>

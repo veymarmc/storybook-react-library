@@ -10,12 +10,8 @@
   margin: 0;
 }
 
-[class*="vmcrjc"], [class*="vmcrjc"] *:not(i) {
+[class*="vmcrjc"], [class*="vmcrjc"] * {
   @include main-styles;
-}
-
-[class*="vmcrjc"] {
-  color: var(--color-text);
 }
 
 // Size names
