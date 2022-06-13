@@ -8,6 +8,7 @@
 @mixin main-styles {
   box-sizing: border-box;
   color: var(--color-text);
+  margin: 0;
 }
 
 [class*="vmcrjc"], [class*="vmcrjc"] *:not(i) {
@@ -52,11 +53,11 @@ $small: small;
 
 // flex styles
 // justify content styles
-$jc-sb: sb;
-$jc-sa: sa;
-$jc-c: c;
+$sb: sb;
+$sa: sa;
+$c: c;
 
-$jc-rules: $jc-sb, $jc-sa, $jc-c;
+$jc-rules: $sb, $sa, $c;
 
 @mixin justify-content($type) {
   @extend .d-flex;
@@ -76,3 +77,16 @@ $jc-rules: $jc-sb, $jc-sa, $jc-c;
   }
 }
 
+@mixin align-items($type) {
+  @extend .d-flex;
+
+  @if $type == c {
+    align-items: center !important;
+  }
+}
+
+@mixin d-center {
+  @extend.d-flex;
+  @include justify-content($c);
+  @include align-items($c);
+}

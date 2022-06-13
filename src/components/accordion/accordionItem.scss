@@ -9,7 +9,7 @@
   }
   .accordion-item {
     &__title {
-      @include s.justify-content(s.$jc-sb);
+      @include s.justify-content(s.$sb);
       background-color: var(--color-default);
       color: var(--color-text-default);
       font-weight: 700;
