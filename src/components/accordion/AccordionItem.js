@@ -29,7 +29,7 @@ export function AccordionItem({
   const invertedColor = inverted && color && !backgroundColor ? { border: `2px solid ${color}` } : {};
   const contentInverted = inverted && color && !backgroundColor ? { border: `2px solid ${color}`, borderTop: 'none' } : {};
   const contentBackground = backgroundColor && color && !inverted ? { border: `2px solid ${backgroundColor}`, borderTop: 'none' } : {};
-  const colorStyle = color ? { color } : {}
+  const colorStyle = color ? { color } : {};
   const backgroundColorStyle = backgroundColor ? { backgroundColor } : {};
 
   return (

@@ -6,11 +6,18 @@
   padding: 1.5rem;
   background-color: var(--color-default);
   
-  h2 {
-    color: var(--color-text-default);
-  }
-
   .navbar {
+    &__title-container {
+      & > h2 {
+        color: var(--color-text-default);
+      }
+      & > h2[data-logo="true"] {
+        margin-left: 1rem;
+      }
+
+      @include s.align-items(s.$c);
+    }
+
     &__actions {
       @include s.d-center;
 
