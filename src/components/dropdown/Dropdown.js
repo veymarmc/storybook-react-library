@@ -1,56 +1,61 @@
 import React, { useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './dropdown.scss';
-import { useVerifyClickInComponent } from './dropdownHooks';
+import { useDropDownStatus, useComponentsArentClicked } from './dropdownHooks';
 
 /**
  * Component that deploy a list of option to be selected with one by default
  */
-export const Dropdown = ({ data, trigger, onChange }) => {
+export const Dropdown = ({
+  data,
+  onChange,
+  position,
+  trigger,
+}) => {
   const [open, setOpen] = useState(false);
   const [selected, setSelected] = useState(
     data.find(d => d.selected) || data[0] || { value: 'choose a value..'}
   );
   const dropdownRef = useRef({});
-
-  const changeOpen = () => {
-    setOpen(!open);
-  };
+  const listRef = useRef({});
+  const [initialState, dropdownDimension, listDimension] = useDropDownStatus(listRef, dropdownRef);
+  const initialStateStyle = initialState ? {visibility: 'hidden'} : {};
+  const positionStyle = !initialState && position === 'right'
+    ? { left: `${-(listDimension.current.width - dropdownDimension.current.width)}px` }
+    : {};
   
-  const selectItem = item => {
+  useComponentsArentClicked([dropdownRef, listRef], open, closeList);
+
+  function closeList() {
+    setOpen(false);
+  }
+
+  function changeOpen() {
+    setOpen(!open);
+  }
+  
+  function selectItem(item) {
     setSelected(item);
     onChange && onChange(item);
     setOpen(false);
-
-  };
+  }
 
   return (
     <div className='vmcrjc-dropdown dropdown' ref={dropdownRef}>
       {trigger(open, changeOpen, selected)}
-      {open && 
-        <DropdownList 
-          data={data}
-          selectItem={selectItem}
-          setOpen={setOpen}
-          parentRef={dropdownRef}
-        />
-      }
+
+      <ul
+        ref={listRef}
+        style={{...initialStateStyle, ...positionStyle}}
+        className={(!initialState && !open) ? 'd-none': ''}
+      >
+        {data.map((d, i) => (
+          <li key={i} onClick={() => selectItem(d)}>
+            {d.item}
+          </li>
+        ))}
+      </ul>
     </div>
-  );
-};
-
-const DropdownList = ({data, selectItem, setOpen, parentRef}) => {
-  const listRef = useRef({});
-  useVerifyClickInComponent([listRef, parentRef], () => setOpen(false))
-
-  return (
-    <ul ref={listRef}>
-      {data.map((d, i) => (
-        <li key={i} onClick={() => selectItem(d)} >
-          {d.item}
-        </li>
-      ))}
-    </ul>
   );
 };
 
@@ -67,6 +72,10 @@ Dropdown.propTypes = {
    */
   onChange: PropTypes.func,
   /**
+   * the position of the menu respect to the trigger component
+   */
+  position: PropTypes.oneOf(['right', 'left']),
+  /**
    * A trigger component to open/close the dropdown
    * Should be a Button component.
    */
@@ -75,5 +84,5 @@ Dropdown.propTypes = {
 
 Dropdown.defaultProps = {
   data: [],
-  onChange: undefined
+  position: 'left',
 };

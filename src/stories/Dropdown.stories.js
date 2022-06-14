@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Dropdown } from './../components';
+import { Button, Dropdown, Icon } from './../components';
 import * as ButtonStories from './Button.stories';
 
 export default {
@@ -23,7 +23,7 @@ const dataItems = [
   }
 ];
 
-export const NestedTriggerDropdown = args => (
+export const DropdownWithButton = args => (
   <Dropdown
     {...args}
     data={dataItems}
@@ -38,3 +38,22 @@ export const NestedTriggerDropdown = args => (
   >
   </Dropdown>
 );
+
+export const DropdownRightPosition = args => (
+  <Dropdown
+    data={dataItems}
+    trigger={(_, setOpen) => (
+      <Icon name='bars' onClick={setOpen} />
+    )}
+    position='right'
+    {...args}
+  >
+  </Dropdown>
+);
+DropdownRightPosition.decorators = [
+  (Story) => (
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <Story />
+    </div>
+  ),
+];

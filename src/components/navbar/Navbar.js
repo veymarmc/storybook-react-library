@@ -53,10 +53,11 @@ export const Navbar = ({
         ))}
         <Dropdown
           data={dataItems}
+          position='right'
           trigger={(_, setOpen) => (
             <Icon
               onClick={setOpen}
-              name='ellipsis-vertical'
+              name='bars'
               style={{fontSize: '1.5rem'}}
             />
           )}
