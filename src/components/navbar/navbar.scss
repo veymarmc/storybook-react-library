@@ -6,12 +6,13 @@
   padding: 1.5rem;
   background-color: var(--color-default);
   color: var(--color-text-default);
+
+  & > * {
+    white-space: nowrap;
+  }
   
   .navbar {
     &__title-container {
-      & > h2 {
-        color: var(--color-text-default);
-      }
       & > h2[data-logo="true"] {
         margin-left: 1rem;
       }

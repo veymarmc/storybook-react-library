@@ -1,23 +1,8 @@
-import React from 'react';
+import React, { useMemo, useRef } from 'react';
 import PropTypes from 'prop-types';
+import { useSetInitialState } from './navbarHooks';
 import { Dropdown, Icon } from './../../components';
 import './navbar.scss';
-
-const dataItems = [
-  {
-    item: 'item1',
-    value: 'item1',
-  },
-  {
-    item: 'item2',
-    value: 'item2',
-    selected: true
-  },
-  {
-    item: 'item3',
-    value: 'item3',
-  }
-];
 
 export const Navbar = ({
   actions,
@@ -28,13 +13,25 @@ export const Navbar = ({
  }) => {
   const backgroundColorStyle = backgroundColor ? { backgroundColor } : {};
   const colorStyle = color ? { color } : {};
+  const containerRef = useRef({});
+  const titleContainerRef = useRef({});
+  const actionsContainerRef = useRef({});
+  const [initialState, currentActions] = useSetInitialState(
+    containerRef,
+    titleContainerRef,
+    actionsContainerRef,
+    actions
+  );
+  const hiddenActions = useMemo(() => convertActionsToDropdownItems(currentActions.hidden), [currentActions.hidden]);
+  const initialStateStyle = initialState ? { visibility: 'hidden' } : {};
 
   return (
     <div
       className='vmcrjc-navbar navbar'
       style={{...colorStyle, ...backgroundColorStyle}}
+      ref={containerRef}
     >
-      <div className='navbar__title-container'>
+      <div className='navbar__title-container' ref={titleContainerRef}>
         {logo}
         <h2
           data-logo={logo ? true : false}
@@ -45,27 +42,40 @@ export const Navbar = ({
       </div>
       
       {!!actions.length &&
-      <div className='navbar__actions'>
-        {actions.map((a, i) => (
+      <div 
+        className='navbar__actions'
+        ref={actionsContainerRef}
+        style={{...initialStateStyle}}
+      >
+        {currentActions.displayed.map(({action}, i) => (
           <React.Fragment key={i}>
-            {a}
+            {action}
           </React.Fragment>
         ))}
-        <Dropdown
-          data={dataItems}
-          position='right'
-          trigger={(_, setOpen) => (
-            <Icon
-              onClick={setOpen}
-              name='bars'
-              style={{fontSize: '1.5rem'}}
-            />
-          )}
-        />
+        {!!currentActions.hidden.length &&
+          <Dropdown
+            data={hiddenActions}
+            position='right'
+            trigger={(_, setOpen) => (
+              <Icon
+                onClick={setOpen}
+                name='bars'
+                style={{fontSize: '1.5rem'}}
+              />
+            )}
+          />
+        }
       </div>
       }
     </div>
   );
+}
+
+function convertActionsToDropdownItems(composedActions) {
+  return composedActions.map(({ action }, i) => ({
+    value: `${i}`,
+    item: action
+  }));
 }
 
 Navbar.propTypes = {
